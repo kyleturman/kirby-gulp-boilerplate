@@ -12,26 +12,25 @@ module.exports = {
     },
 
     resolve: {
-        extensions: ['', '.jsx', '.js', '.json', '.less'],
+        extensions: ['.jsx', '.js', '.json', '.less'],
     },
 
     resolveLoader: {
-        root: path.join(__dirname, 'node_modules')
+        modules: [__dirname, 'node_modules'],
     },
 
     module: {
-        preLoaders: [
-            {
-                test: /\.jsx?$/,
-                exclude: /source\//,
-                loader: 'source-map'
-            }
-        ],
         loaders: [
             {
                 test: /\.jsx?$/,
+                exclude: /source\//,
+                loader: 'source-map',
+                enforce: 'pre'
+            },
+            {
+                test: /\.jsx?$/,
                 exclude: /node_modules/,
-                loader: 'babel'
+                loader: 'babel-loader'
             }
         ]
     },

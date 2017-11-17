@@ -43,17 +43,7 @@ var config = {
     base: dist,
     port: 8080,
     host: 'localhost',
-    surfacePort: 9000,
-    configCallback: function _configCallback(type, collection) {
-      console.log(collection);
-      if (type === connect.OPTIONS_SPAWN_OBJ) {
-        collection.env = Object.assign({
-          MY_CUSTOM_ENV_VAR: "env_var_value"
-        }, process.env);
-
-        return collection;
-      }
-    }
+    surfacePort: 9000
   },
 
   clean: {
